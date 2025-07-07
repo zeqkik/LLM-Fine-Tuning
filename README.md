@@ -93,11 +93,4 @@ The fine-tuned model consistently provides correct and concise answers, demonstr
 
 ... SHOW THE ACCURACCY...
 
-
-
-Para entender a história completa deste projeto, seus desafios e os resultados, leia o artigo detalhado no meu LinkedIn/Medium:
-[Link para o seu Artigo no Medium/LinkedIn]
-
-O código completo e as instruções técnicas estão disponíveis neste README (em inglês).
-
 ---
