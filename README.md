@@ -71,4 +71,4 @@ Here are some examples of the performance of the base model and the fine-tuned m
 | `You are playing Uno. Discard: Blue 8, Hand: [Wild card, Red 8, +2 Yellow, Green 7, Red 3, Red 9, Yellow 4]. What card can you play?` | `Green 7.` | `Red 8.` | ❌ | ✅ |
 | `You are playing Uno. Discard: Red 2, Hand: [Blue 3, Red 4, Yellow 4, Yellow Inverse, Green +2, Blue 6, Red 3]. What card can you play?` | `Yellow 4 or Green +2.` | `Red 4.` | ❌ | ✅ |
 
-The fine-tuning process significantly transformed Gemma 7B-IT's ability to understand and apply UNO rules,
+So, we can see that the fine-tuning process significantly transformed Gemma 7B-IT's ability to understand and apply UNO rules.
