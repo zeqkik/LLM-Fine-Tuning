@@ -78,42 +78,10 @@ The fine-tuning process significantly transformed Gemma 7B-IT's ability to under
 
 | Scenario (Prompt) | Base Model's Response | Fine-tuned Model's Response | Base Model Result | Fine-tuned Model Result |
 | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------- | :---------------------------------- | :---------------- | :---------------------- |
-| `You are playing Uno. Discard: Red 7, Hand: [Blue 3, Red 8, Green 5, +2 Yellow]. What card can you play?` | `**Response:** The card you can play is the Green 5.` | `Red 8.` | ❌ | ✅ |
-| `You are playing Uno. Discard: Red +2, Hand: [Green 0, Blue 1, Red Block]. What card can you play?` | `A. Green 0 B. Azul 1 C. Vermelho +2 ... A resposta para a questão é a carta Verde 0.` | `Bloquear Vermelho.` | ❌ | ❌ |
-| `You are playing Uno. Discard: Blue 4, Hand: [Green 0, Blue 1, Red Block]. What card can you play?` | `**Response:** The card you can play is the Blue 1.` | `Azul 1.` | ✅ | ✅ |
-| `You are playing Uno. Discard: Blue 8, Hand: [Wild, Red 8, +2 Yellow, Green 7, Red 3, Red 9, Yellow 4]. What card can you play?` | `**Response:** The card you can play is the Green 7.` | `Red 8.` | ❌ | ✅ |
-| `You are playing Uno. Discard: Red 2, Hand: [Blue 3, Red 4, Yellow 4, Yellow Inverse, Green +2, Blue 6, Red 3]. What card can you play?` | `**Response:** Yellow 4 or Green +2.` | `Red 4.` | ❌ | ✅ |
+| `You are playing Uno. Discard: Red 7, Hand: [Blue 3, Red 8, Green 5, +2 Yellow]. What card can you play?` | `Green 5.` | `Red 8.` | ❌ | ✅ |
+| `You are playing Uno. Discard: Red +2, Hand: [Green 0, Blue 1, Red Block]. What card can you play?` | `Green 0.` | `Block Red.` | ❌ | ✅ |
+| `You are playing Uno. Discard: Blue 4, Hand: [Green 0, Blue 1, Red Block]. What card can you play?` | `Blue 1.` | `Blue 1.` | ✅ | ✅ |
+| `You are playing Uno. Discard: Blue 8, Hand: [Wild card, Red 8, +2 Yellow, Green 7, Red 3, Red 9, Yellow 4]. What card can you play?` | `Green 7.` | `Red 8.` | ❌ | ✅ |
+| `You are playing Uno. Discard: Red 2, Hand: [Blue 3, Red 4, Yellow 4, Yellow Inverse, Green +2, Blue 6, Red 3]. What card can you play?` | `Yellow 4 or Green +2.` | `Red 4.` | ❌ | ✅ |
 
-### Before Fine-tuning (Gemma 7B-IT Base Model)
-
-
-- **Prompt 1:** `You are playing Uno. Discard: Red 7, Hand: [Blue 3, Red 8, Green 5, +2 Yellow]. What card can you play?`
-- **Base Model's Response:** `**Response:** The card you can play is the Green 5.`
-- **Analysis:** Incorrect.
-
-  - **Prompt 2:** `You are playing Uno. Discard: Red +2, Hand: [Green 0, Blue 1, Red Block]. What card can you play?`
-- **Base Model's Response:** `**Response:** The card you can play is the Green 0.`
-- **Analysis:** Incorrect.
-
-  - **Prompt 3:** `You are playing Uno. Discard: Blue 4, Hand: [Green 0, Blue 1, Red Block]. What card can you play?`
-- **Base Model's Response:** `**Response:** The card you can play is the Blue 1.`
-- **Analysis:** Correct.
-
-  - **Prompt 4:** `You are playing Uno. Discard: Blue 8, Hand: [Wild, Red 8, +2 Yellow, Green 7, Red 3, Red 9, Yellow 4]. What card can you play?`
-- **Base Model's Response:** `**Response:** The card you can play is the Green 7.`
-- **Analysis:** Incorrect.
-
-  - **Prompt 5:** `You are playing Uno. Discard: Red 2, Hand: [Blue 3, Red 4, Yellow 4, Yellow Inverse, Green +2, Blue 6, Red 3]. What card can you play?`
-- **Base Model's Response:** `**Response:** Yellow 4 or Green +2.`
-- **Analysis:** Incorrect.
-
-### After Fine-tuning (AI Uno Master)
-
-The fine-tuned model consistently provides correct and concise answers, demonstrating its acquired expertise in UNO rules.
-- **Prompt:** `You are playing Uno. Discard: Red 7, Hand: [Blue 3, Red 8, Green 5, +2 Yellow]. What card can you play?`
-- **Fine-tuned Model's Response:** `Red 8.`
-- **Analysis:** Correct! Accurately identified the valid move.
-
-... SHOW THE ACCURACCY...
-
----
+So, we can see that the fine-tuning process has significantly improved the model's understanding of the rules of the game.
