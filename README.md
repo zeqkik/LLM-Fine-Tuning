@@ -58,23 +58,10 @@ To teach the LLM the rules of UNO, a high-quality dataset of `(game scenario, co
 
 The Gemma 7B-IT model was fine-tuned using the generated dataset via LoRA. This technique allowed for efficient training on Google Colab's A100 GPU by only updating a small fraction of the model's parameters.
 
-- **Key Configuration:**
-    - **Base Model:** Gemma 7B-IT
-    - **Quantization:** 4-bit (using `bitsandbytes`) for memory efficiency.
-    - **PEFT Method:** LoRA (rank `r=16`, `lora_alpha=16`, `lora_dropout=0.05`)
-    - **Trainer:** `SFTTrainer` from `trl` library
-    - **Epochs:** 10 (with early stopping considerations)
-    - **Batch Size:** 2 (per device) with gradient accumulation of 4 (effective batch size of 8)
-    - **Learning Rate:** 1e-4
-    - **Precision:** `fp16=True` (optimized for A100 GPU)
 
 ## Results: Before & After Fine-tuning
 
-The transformation of Gemma 7B-IT into an "AI Uno Master" is evident in its ability to consistently apply UNO rules.(**the examples have been coded in Portuguese-BR for publication reasons**)
-
-## Results: Before & After Fine-tuning
-
-The fine-tuning process significantly transformed Gemma 7B-IT's ability to understand and apply UNO rules, from struggling with basic logic to providing consistent and concise answers.
+Here are some examples of the performance of the base model and the fine-tuned model in the task of playing the next UNO card(**In the code, the examples are in Portuguese-BR for publication reasons**):
 
 | Scenario (Prompt) | Base Model's Response | Fine-tuned Model's Response | Base Model Result | Fine-tuned Model Result |
 | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------- | :---------------------------------- | :---------------- | :---------------------- |
@@ -84,4 +71,4 @@ The fine-tuning process significantly transformed Gemma 7B-IT's ability to under
 | `You are playing Uno. Discard: Blue 8, Hand: [Wild card, Red 8, +2 Yellow, Green 7, Red 3, Red 9, Yellow 4]. What card can you play?` | `Green 7.` | `Red 8.` | ❌ | ✅ |
 | `You are playing Uno. Discard: Red 2, Hand: [Blue 3, Red 4, Yellow 4, Yellow Inverse, Green +2, Blue 6, Red 3]. What card can you play?` | `Yellow 4 or Green +2.` | `Red 4.` | ❌ | ✅ |
 
-So, we can see that the fine-tuning process has significantly improved the model's understanding of the rules of the game.
+The fine-tuning process significantly transformed Gemma 7B-IT's ability to understand and apply UNO rules,
