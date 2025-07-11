@@ -72,17 +72,40 @@ The Gemma 7B-IT model was fine-tuned using the generated dataset via LoRA. This 
 
 The transformation of Gemma 7B-IT into an "AI Uno Master" is evident in its ability to consistently apply UNO rules.(**the examples have been coded in Portuguese-BR for publication reasons**)
 
+## Results: Before & After Fine-tuning
+
+The fine-tuning process significantly transformed Gemma 7B-IT's ability to understand and apply UNO rules, from struggling with basic logic to providing consistent and concise answers.
+
+| Scenario (Prompt) | Base Model's Response | Fine-tuned Model's Response | Base Model Result | Fine-tuned Model Result |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------- | :---------------------------------- | :---------------- | :---------------------- |
+| `You are playing Uno. Discard: Red 7, Hand: [Blue 3, Red 8, Green 5, +2 Yellow]. What card can you play?` | `**Response:** The card you can play is the Green 5.` | `Red 8.` | ❌ | ✅ |
+| `You are playing Uno. Discard: Red +2, Hand: [Green 0, Blue 1, Red Block]. What card can you play?` | `A. Green 0 B. Azul 1 C. Vermelho +2 ... A resposta para a questão é a carta Verde 0.` | `Bloquear Vermelho.` | ❌ | ❌ |
+| `You are playing Uno. Discard: Blue 4, Hand: [Green 0, Blue 1, Red Block]. What card can you play?` | `**Response:** The card you can play is the Blue 1.` | `Azul 1.` | ✅ | ✅ |
+| `You are playing Uno. Discard: Blue 8, Hand: [Wild, Red 8, +2 Yellow, Green 7, Red 3, Red 9, Yellow 4]. What card can you play?` | `**Response:** The card you can play is the Green 7.` | `Red 8.` | ❌ | ✅ |
+| `You are playing Uno. Discard: Red 2, Hand: [Blue 3, Red 4, Yellow 4, Yellow Inverse, Green +2, Blue 6, Red 3]. What card can you play?` | `**Response:** Yellow 4 or Green +2.` | `Red 4.` | ❌ | ✅ |
+
 ### Before Fine-tuning (Gemma 7B-IT Base Model)
 
-The base model often struggled with core UNO logic, exhibiting:
-- Incorrect move suggestions.
-- Hallucinations of non-existent rules or cards.
-- Failure to understand action card effects.
-- Verbose or poorly formatted responses.
 
-- **Prompt:** `You are playing Uno. Discard: Red 7, Hand: [Blue 3, Red 8, Green 5, +2 Yellow]. What card can you play?`
+- **Prompt 1:** `You are playing Uno. Discard: Red 7, Hand: [Blue 3, Red 8, Green 5, +2 Yellow]. What card can you play?`
 - **Base Model's Response:** `**Response:** The card you can play is the Green 5.`
-- **Analysis:** Incorrect. "Green 5" does not match "Red 7". The correct play would be "Red 8".
+- **Analysis:** Incorrect.
+
+  - **Prompt 2:** `You are playing Uno. Discard: Red +2, Hand: [Green 0, Blue 1, Red Block]. What card can you play?`
+- **Base Model's Response:** `**Response:** The card you can play is the Green 0.`
+- **Analysis:** Incorrect.
+
+  - **Prompt 3:** `You are playing Uno. Discard: Blue 4, Hand: [Green 0, Blue 1, Red Block]. What card can you play?`
+- **Base Model's Response:** `**Response:** The card you can play is the Blue 1.`
+- **Analysis:** Correct.
+
+  - **Prompt 4:** `You are playing Uno. Discard: Blue 8, Hand: [Wild, Red 8, +2 Yellow, Green 7, Red 3, Red 9, Yellow 4]. What card can you play?`
+- **Base Model's Response:** `**Response:** The card you can play is the Green 7.`
+- **Analysis:** Incorrect.
+
+  - **Prompt 5:** `You are playing Uno. Discard: Red 2, Hand: [Blue 3, Red 4, Yellow 4, Yellow Inverse, Green +2, Blue 6, Red 3]. What card can you play?`
+- **Base Model's Response:** `**Response:** Yellow 4 or Green +2.`
+- **Analysis:** Incorrect.
 
 ### After Fine-tuning (AI Uno Master)
 
